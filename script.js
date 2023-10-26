@@ -21,21 +21,22 @@ async function performSearch(query) {
         console.error("Error fetching search results:", error);
         resultsContainer.textContent = "Error fetching search results.";
     }
+}
 
-    // Update the URL path with the query
-    history.pushState({}, "", `/search?q=${encodeURIComponent(query)}`);
+function loadResultsFromQuery() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryParam = urlParams.get('q');
+    if (queryParam) {
+        document.getElementById("search-input").value = queryParam;
+        performSearch(queryParam);
+    }
 }
 
 document.getElementById("search-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from submitting the traditional way
+    event.preventDefault(); 
     const query = document.getElementById("search-input").value;
     performSearch(query);
+    history.pushState({}, "", `/search?q=${encodeURIComponent(query)}`);
 });
 
-// Load search results if query parameter is present in the URL
-const urlParams = new URLSearchParams(window.location.search);
-const queryParam = urlParams.get('q');
-if (queryParam) {
-    document.getElementById("search-input").value = queryParam;
-    performSearch(queryParam);
-}
+loadResultsFromQuery();
