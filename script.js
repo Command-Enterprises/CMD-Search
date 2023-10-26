@@ -26,7 +26,7 @@ async function performSearch(query) {
 }
 
 document.getElementById("search-form").addEventListener("submit", function(event) {
-    event.preventDefault(); 
+    event.preventDefault();
     const query = document.getElementById("search-input").value;
     performSearch(query);
 });
