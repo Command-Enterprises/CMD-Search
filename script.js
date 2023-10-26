@@ -1,14 +1,8 @@
-function handleKeyPress(event) {
-    const cmdOrCtrlKey = event.metaKey || event.ctrlKey;
-    const fKey = event.key.toLowerCase();
-    if (cmdOrCtrlKey && fKey === "f") {
-        performSearch();
-        event.preventDefault();
-    }
-}
-
 function performSearch() {
-    alert("Performing search!");
+    const searchInput = document.getElementById("search-input").value;
+    const resultsContainer = document.getElementById("search-results");
+    // Replace this with your actual search logic, for now, displaying the input value as a result.
+    resultsContainer.textContent = `Search results for: ${searchInput}`;
 }
 
-document.addEventListener("keydown", handleKeyPress);
+document.getElementById("search-button").addEventListener("click", performSearch);
