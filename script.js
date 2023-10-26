@@ -21,19 +21,22 @@ async function performSearch(query) {
         console.error("Error fetching search results:", error);
         resultsContainer.textContent = "Error fetching search results.";
     }
+}
 
-    history.pushState({}, "", `/q=${encodeURIComponent(query)}`);
+function loadResultsFromQuery() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryParam = urlParams.get('q');
+    if (queryParam) {
+        document.getElementById("search-input").value = queryParam;
+        performSearch(queryParam);
+    }
 }
 
 document.getElementById("search-form").addEventListener("submit", function(event) {
     event.preventDefault();
     const query = document.getElementById("search-input").value;
     performSearch(query);
+    history.pushState({}, "", `/q=${encodeURIComponent(query)}`);
 });
 
-const urlParams = new URLSearchParams(window.location.search);
-const queryParam = urlParams.get('q');
-if (queryParam) {
-    document.getElementById("search-input").value = queryParam;
-    performSearch(queryParam);
-}
+loadResultsFromQuery();
