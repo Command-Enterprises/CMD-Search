@@ -11,3 +11,14 @@
   font-size: 15px;
   margin-top: 1px;
 }
+
+.search-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.results {
+  font-family: Arial;
+  text-align: center;
+  margin-top: 20px;
+}
