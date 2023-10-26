@@ -21,6 +21,8 @@ async function performSearch(query) {
         console.error("Error fetching search results:", error);
         resultsContainer.textContent = "Error fetching search results.";
     }
+
+    history.pushState({}, "", `/search?q=${encodeURIComponent(query)}`);
 }
 
 function loadResultsFromQuery() {
@@ -36,7 +38,6 @@ document.getElementById("search-form").addEventListener("submit", function(event
     event.preventDefault();
     const query = document.getElementById("search-input").value;
     performSearch(query);
-    history.pushState({}, "", `/q=${encodeURIComponent(query)}`);
 });
 
 loadResultsFromQuery();
