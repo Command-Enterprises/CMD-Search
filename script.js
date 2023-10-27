@@ -1,6 +1,19 @@
+const searchForm = document.getElementById("search-form");
+const searchInput = document.getElementById("search-input");
+const searchResults = document.getElementById("search-results");
+
+function animateToTopCenter() {
+    searchForm.classList.add("top-center");
+    searchForm.classList.remove("middle-center", "animated-up");
+}
+
+function animateToMiddleCenter() {
+    searchForm.classList.add("middle-center", "animated-up");
+    searchForm.classList.remove("top-center");
+}
+
 async function performSearch(query) {
-    const resultsContainer = document.getElementById("search-results");
-    resultsContainer.textContent = "Searching...";
+    searchResults.textContent = "Searching...";
 
     const duckDuckGoEndpoint = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json`;
 
@@ -13,7 +26,7 @@ async function performSearch(query) {
         const data = await response.json();
 
         if (data.Results && data.Results.length > 0) {
-            resultsContainer.innerHTML = data.Results.map(result => {
+            searchResults.innerHTML = data.Results.map(result => {
                 return `
                     <div class="result-item">
                         <div class="result-details">
@@ -24,25 +37,34 @@ async function performSearch(query) {
                 `;
             }).join("");
         } else {
-            resultsContainer.textContent = "No results found.";
+            searchResults.textContent = "No results found.";
         }
     } catch (error) {
         console.error("Error fetching search results:", error);
-        resultsContainer.textContent = "Error fetching search results.";
+        searchResults.textContent = "Error fetching search results.";
     }
 }
 
-document.getElementById("search-form").addEventListener("submit", function(event) {
+searchInput.addEventListener("input", function() {
+    if (searchInput.value.trim() !== "") {
+        animateToTopCenter();
+    } else {
+        animateToMiddleCenter();
+    }
+});
+
+searchForm.addEventListener("submit", async function(event) {
     event.preventDefault();
-    const query = document.getElementById("search-input").value;
-    performSearch(query);
+    const query = searchInput.value;
+    await performSearch(query);
     history.pushState({}, "", `/search?q=${encodeURIComponent(query)}`);
+    animateToTopCenter();
 });
 
 // Load results if query is present in the URL
 const urlParams = new URLSearchParams(window.location.search);
 const queryParam = urlParams.get('q');
 if (queryParam) {
-    document.getElementById("search-input").value = queryParam;
-    performSearch(queryParam);
+    searchInput.value = queryParam;
+    performSearch(queryParam).then(() => animateToTopCenter());
 }
