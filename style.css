@@ -52,3 +52,25 @@ body {
     color: #555;
     margin-top: 5px;
 }
+
+.top-center {
+    align-self: flex-start;
+    animation: slide-up 0.3s ease-out;
+}
+
+.middle-center {
+    align-self: center;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.animated-up {
+    transition: transform 0.3s ease-out;
+}
