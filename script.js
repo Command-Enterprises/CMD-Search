@@ -5,28 +5,6 @@ const searchInput = document.getElementById("search-input");
 const searchForm = document.getElementById("search-form");
 const searchResults = document.getElementById("search-results");
 
-function animateToTopCenter() {
-    container.style.justifyContent = "flex-start";
-    title.style.fontSize = "30px";
-    subtitle.style.fontSize = "14px";
-    searchInput.style.fontSize = "14px";
-}
-
-function animateToMiddleCenter() {
-    container.style.justifyContent = "center";
-    title.style.fontSize = "40px";
-    subtitle.style.fontSize = "18px";
-    searchInput.style.fontSize = "16px";
-}
-
-searchInput.addEventListener("input", function() {
-    if (searchInput.value.trim() !== "") {
-        animateToTopCenter();
-    } else {
-        animateToMiddleCenter();
-    }
-});
-
 async function performSearch(query) {
     searchResults.textContent = "Searching...";
 
@@ -45,6 +23,7 @@ async function performSearch(query) {
                 return `
                     <div class="result-item">
                         <div class="result-details">
+                            <img src="${result.Icon?.URL}" alt="Result Icon" class="result-icon">
                             <a href="${result.FirstURL}" target="_blank" class="result-title">${result.Text}</a>
                             <p class="result-url">${result.FirstURL}</p>
                         </div>
@@ -59,6 +38,14 @@ async function performSearch(query) {
         searchResults.textContent = "Error fetching search results.";
     }
 }
+
+searchInput.addEventListener("input", function() {
+    if (searchInput.value.trim() !== "") {
+        animateToTopCenter();
+    } else {
+        animateToMiddleCenter();
+    }
+});
 
 searchForm.addEventListener("submit", async function(event) {
     event.preventDefault();
