@@ -1,6 +1,4 @@
 const container = document.querySelector(".container");
-const title = document.querySelector(".title");
-const subtitle = document.querySelector(".subtitle");
 const searchInput = document.getElementById("search-input");
 const searchForm = document.getElementById("search-form");
 const searchResults = document.getElementById("search-results");
@@ -24,8 +22,10 @@ async function performSearch(query) {
                     <div class="result-item">
                         <div class="result-details">
                             <img src="${result.Icon?.URL}" alt="Result Icon" class="result-icon">
-                            <a href="${result.FirstURL}" target="_blank" class="result-title">${result.Text}</a>
-                            <p class="result-url">${result.FirstURL}</p>
+                            <div class="result-text">
+                                <a href="${result.FirstURL}" class="result-title" target="_blank">${result.Text}</a>
+                                <p class="result-link">${result.FirstURL}</p>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -39,20 +39,11 @@ async function performSearch(query) {
     }
 }
 
-searchInput.addEventListener("input", function() {
-    if (searchInput.value.trim() !== "") {
-        animateToTopCenter();
-    } else {
-        animateToMiddleCenter();
-    }
-});
-
 searchForm.addEventListener("submit", async function(event) {
     event.preventDefault();
     const query = searchInput.value;
     await performSearch(query);
     history.pushState({}, "", `/search?q=${encodeURIComponent(query)}`);
-    animateToTopCenter();
 });
 
 // Load results if query is present in the URL
@@ -60,5 +51,5 @@ const urlParams = new URLSearchParams(window.location.search);
 const queryParam = urlParams.get('q');
 if (queryParam) {
     searchInput.value = queryParam;
-    performSearch(queryParam).then(() => animateToTopCenter());
+    performSearch(queryParam);
 }
