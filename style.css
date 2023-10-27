@@ -38,8 +38,8 @@ body {
 }
 
 #search-results {
-    text-align: left;
-    width: 100%;
+    text-align: center;
+    width: 100%; /* Set a width for the search results container */
 }
 
 .result-item {
@@ -55,4 +55,19 @@ body {
     width: 24px;
     height: 24px;
     margin-right: 10px;
+}
+
+.result-title {
+    font-size: 18px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.result-title:hover {
+    text-decoration: underline;
+}
+
+.result-link {
+    font-size: 14px;
+    color: #888;
 }
