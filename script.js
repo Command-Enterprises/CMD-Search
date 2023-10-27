@@ -14,10 +14,8 @@ async function performSearch(query) {
 
         if (data.Results && data.Results.length > 0) {
             resultsContainer.innerHTML = data.Results.map(result => {
-                const iconURL = result.Icon && result.Icon.URL ? result.Icon.URL : 'https://example.com/default-icon.png'; // Replace with your default icon URL
                 return `
                     <div class="result-item">
-                        <img class="result-icon" src="${iconURL}" alt="Result Icon">
                         <div class="result-details">
                             <a href="${result.FirstURL}" target="_blank" class="result-title">${result.Text}</a>
                             <p class="result-url">${result.FirstURL}</p>
