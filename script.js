@@ -1,27 +1,31 @@
 const container = document.querySelector(".container");
 const title = document.querySelector(".title");
 const subtitle = document.querySelector(".subtitle");
-const urlInput = document.getElementById("url-input");
-const webFrame = document.getElementById("web-frame");
+const searchInput = document.getElementById("search-input");
+const searchForm = document.getElementById("search-form");
+const searchResults = document.getElementById("search-results");
 
-// Function to animate elements to the top of the site
-function animateToTop() {
-  container.style.justifyContent = "flex-start";
-  title.style.fontSize = "30px";
-  subtitle.style.fontSize = "14px";
-  urlInput.style.fontSize = "14px";
-  container.style.padding = "10px";
+function animateToTopCenter() {
+    container.style.justifyContent = "flex-start";
+    title.style.fontSize = "30px";
+    subtitle.style.fontSize = "14px";
+    searchInput.style.fontSize = "14px";
 }
 
-// Add event listener to input field for animation
-urlInput.addEventListener("focus", animateToTop);
+function animateToMiddleCenter() {
+    container.style.justifyContent = "center";
+    title.style.fontSize = "40px";
+    subtitle.style.fontSize = "18px";
+    searchInput.style.fontSize = "16px";
+}
 
-// Event listener for the "Go" button to load the URL
-document.getElementById("go-button").addEventListener("click", () => {
-  const url = urlInput.value;
-  webFrame.src = url;
+searchInput.addEventListener("input", function() {
+    if (searchInput.value.trim() !== "") {
+        animateToTopCenter();
+    } else {
+        animateToMiddleCenter();
+    }
 });
-
 
 async function performSearch(query) {
     searchResults.textContent = "Searching...";
@@ -55,14 +59,6 @@ async function performSearch(query) {
         searchResults.textContent = "Error fetching search results.";
     }
 }
-
-searchInput.addEventListener("input", function() {
-    if (searchInput.value.trim() !== "") {
-        animateToTopCenter();
-    } else {
-        animateToMiddleCenter();
-    }
-});
 
 searchForm.addEventListener("submit", async function(event) {
     event.preventDefault();
