@@ -1,16 +1,27 @@
-const searchForm = document.getElementById("search-form");
-const searchInput = document.getElementById("search-input");
-const searchResults = document.getElementById("search-results");
+const container = document.querySelector(".container");
+const title = document.querySelector(".title");
+const subtitle = document.querySelector(".subtitle");
+const urlInput = document.getElementById("url-input");
+const webFrame = document.getElementById("web-frame");
 
-function animateToTopCenter() {
-    searchForm.classList.add("top-center");
-    searchForm.classList.remove("middle-center", "animated-up");
+// Function to animate elements to the top of the site
+function animateToTop() {
+  container.style.justifyContent = "flex-start";
+  title.style.fontSize = "30px";
+  subtitle.style.fontSize = "14px";
+  urlInput.style.fontSize = "14px";
+  container.style.padding = "10px";
 }
 
-function animateToMiddleCenter() {
-    searchForm.classList.add("middle-center", "animated-up");
-    searchForm.classList.remove("top-center");
-}
+// Add event listener to input field for animation
+urlInput.addEventListener("focus", animateToTop);
+
+// Event listener for the "Go" button to load the URL
+document.getElementById("go-button").addEventListener("click", () => {
+  const url = urlInput.value;
+  webFrame.src = url;
+});
+
 
 async function performSearch(query) {
     searchResults.textContent = "Searching...";
