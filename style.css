@@ -46,16 +46,8 @@ body {
     margin-bottom: 20px;
 }
 
-.result-details {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.result-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+.result-text {
+    text-align: center;
 }
 
 .result-title {
