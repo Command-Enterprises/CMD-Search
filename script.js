@@ -20,12 +20,9 @@ async function performSearch(query) {
             searchResults.innerHTML = data.Results.map(result => {
                 return `
                     <div class="result-item">
-                        <div class="result-details">
-                            <img src="${result.Icon?.URL}" alt="Result Icon" class="result-icon">
-                            <div class="result-text">
-                                <a href="${result.FirstURL}" class="result-title" target="_blank">${result.Text}</a>
-                                <p class="result-link">${result.FirstURL}</p>
-                            </div>
+                        <div class="result-text">
+                            <a href="${result.FirstURL}" class="result-title" target="_blank">${result.Text}</a>
+                            <p class="result-link">${result.FirstURL}</p>
                         </div>
                     </div>
                 `;
@@ -45,11 +42,3 @@ searchForm.addEventListener("submit", async function(event) {
     await performSearch(query);
     history.pushState({}, "", `/search?q=${encodeURIComponent(query)}`);
 });
-
-// Load results if query is present in the URL
-const urlParams = new URLSearchParams(window.location.search);
-const queryParam = urlParams.get('q');
-if (queryParam) {
-    searchInput.value = queryParam;
-    performSearch(queryParam);
-}
