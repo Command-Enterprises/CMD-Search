@@ -8,4 +8,4 @@ You can just call it Command Search. Search Engine.
 ## Contributors
 [![Contrib](https://contrib.rocks/image?repo=Command-Enterprises/CMD-Search)](https://github.com/Command-Enterprises/CMD-Search/graphs/contributors)
 
-### Contributing is welcome!
+### Contributing is welcome! (via pull request or email us at CMDSearch@post.com to be a contributor)
