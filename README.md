@@ -6,11 +6,11 @@ You can just call it Command Search. Search Engine.
 - Work in Progress
 
 ### Socials:
-- <img src="static/assets/other/email.svg" width="25" height="25">   
+- <img src="assets/other/email.svg" width="25" height="25">   
 CommanderProxy@cyber-wizard.com
-- <img src="static/assets/other/discord.svg" width="25" height="25">  
+- <img src="assets/other/discord.svg" width="25" height="25">  
 https://discord.gg/BwejDYd7pM
-- <img src="static/assets/other/x.png" width="25" height="25">  
+- <img src="assets/other/x.png" width="25" height="25">  
 https://twitter.com/CmdEntOfficial 
 
 ## Contributors
