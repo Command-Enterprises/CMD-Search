@@ -5,6 +5,14 @@ You can just call it Command Search. Search Engine.
 **Features:**  
 - Work in Progress
 
+### Socials:
+- <img src="static/assets/other/email.svg" width="25" height="25">   
+CommanderProxy@cyber-wizard.com
+- <img src="static/assets/other/discord.svg" width="25" height="25">  
+https://discord.gg/BwejDYd7pM
+- <img src="static/assets/other/x.png" width="25" height="25">  
+https://twitter.com/CmdEntOfficial 
+
 ## Contributors
 [![Contrib](https://contrib.rocks/image?repo=Command-Enterprises/CMD-Search)](https://github.com/Command-Enterprises/CMD-Search/graphs/contributors)
 
