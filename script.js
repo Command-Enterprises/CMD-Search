@@ -28,8 +28,8 @@ async function performSearch(query) {
                 `;
             }).join("");
         } else {
-            searchResults.textContent = "No results found.";
             if(data.AbstractURL.length > 0){
+                searchResults.innerHTML = data.Results.map(result => {
                 return `
                     <div class="result-item">
                         <div class="result-text">
@@ -38,7 +38,8 @@ async function performSearch(query) {
                         </div>
                     </div>
                 `;
-            }
+            })
+        }
         }
     } catch (error) {
         console.error("Error fetching search results:", error);
