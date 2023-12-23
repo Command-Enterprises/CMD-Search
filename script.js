@@ -29,11 +29,13 @@ async function performSearch(query) {
             }).join("");
         } else {
             if(data.AbstractURL.length > 0){
+                console.log(data.AbstractURL)
+                console.log(data.AbstractSource)
                 searchResults.innerHTML = data.Results.map(result => {
                 return `
                     <div class="result-item">
                         <div class="result-text">
-                            <a href="${data.AbstractURL}" class="result-title" target="_blank">${data.AbstractSource}</a>
+                            <a href="${result.AbstractURL}" class="result-title" target="_blank">${result.AbstractSource}</a>
                             <p class="result-link">${data.AbstractURL}</p>
                         </div>
                     </div>
