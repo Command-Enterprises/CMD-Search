@@ -40,7 +40,7 @@ async function performSearch(query) {
                         </div>
                     </div>
                 `;
-            })
+            }).join("")
         }
         }
     } catch (error) {
