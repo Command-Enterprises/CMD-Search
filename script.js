@@ -28,7 +28,11 @@ async function performSearch(query) {
                 `;
             }).join("");
         } else {
-            searchResults.textContent = "No results found.";
+            if(data.AbstractURL.length > 0){
+                console.log(data.AbstractURL)
+                console.log(data.AbstractSource)
+                searchResults.innerHTML = '<div class="result-item"><div class="result-text"><a href="'+data.AbstractURL+'" class="result-title" target="_blank">'+data.AbstractSource+'</a><p class="result-link">'+data.AbstractURL+'</p></div></div>';
+        }
         }
     } catch (error) {
         console.error("Error fetching search results:", error);
