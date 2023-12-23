@@ -31,7 +31,7 @@ async function performSearch(query) {
             if(data.AbstractURL.length > 0){
                 console.log(data.AbstractURL)
                 console.log(data.AbstractSource)
-                searchResults.innerHTML = '<div class="result-item"><div class="result-text"><a href="${result.AbstractURL}" class="result-title" target="_blank">${result.AbstractSource}</a><p class="result-link">${data.AbstractURL}</p></div></div>';
+                searchResults.innerHTML = '<div class="result-item"><div class="result-text"><a href="'+result.AbstractURL+'" class="result-title" target="_blank">'+result.AbstractSource+'</a><p class="result-link">'+data.AbstractURL+'</p></div></div>';
         }
         }
     } catch (error) {
